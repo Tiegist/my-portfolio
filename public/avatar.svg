@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" fill="none">
+  <defs>
+    <linearGradient id="avatarGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#6366f1"/>
+      <stop offset="50%" stop-color="#8b5cf6"/>
+      <stop offset="100%" stop-color="#06b6d4"/>
+    </linearGradient>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0f0f1a"/>
+      <stop offset="100%" stop-color="#1a1a2e"/>
+    </linearGradient>
+  </defs>
+  <rect width="400" height="400" fill="url(#bgGrad)"/>
+  <circle cx="200" cy="200" r="180" fill="url(#avatarGrad)" opacity="0.15"/>
+  <circle cx="200" cy="160" r="70" fill="url(#avatarGrad)"/>
+  <ellipse cx="200" cy="320" rx="110" ry="90" fill="url(#avatarGrad)"/>
+  <circle cx="200" cy="200" r="175" stroke="url(#avatarGrad)" stroke-width="2" fill="none" opacity="0.4"/>
+  <text x="200" y="380" text-anchor="middle" fill="#6366f1" font-family="system-ui,sans-serif" font-size="14" font-weight="600" opacity="0.6">FULL-STACK DEV</text>
+</svg>

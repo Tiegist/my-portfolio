@@ -10,6 +10,11 @@ export interface SkillCategory {
   skills: Skill[]
 }
 
+export interface ProjectGithubRepo {
+  label: string
+  url: string
+}
+
 export interface Project {
   id: string
   title: string
@@ -21,7 +26,7 @@ export interface Project {
   category: 'web' | 'erp' | 'ecommerce'
   technologies: string[]
   liveUrl?: string
-  githubUrl?: string
+  githubRepos?: ProjectGithubRepo[]
 }
 
 export interface TimelineItem {
@@ -175,7 +180,10 @@ export const projects: Project[] = [
     category: 'erp',
     technologies: ['Vue.js', 'Laravel', 'MySQL', 'Tailwind CSS', 'REST API'],
     liveUrl: 'https://criminal.kalkidan.net/',
-    githubUrl: '#',
+    githubRepos: [
+      { label: 'Backend', url: 'https://github.com/kalkidansolomon16/criminalback' },
+      { label: 'Frontend', url: 'https://github.com/Tiegist/criminal-dashboard' },
+    ],
   },
   {
     id: 'adera-shop',
@@ -194,7 +202,10 @@ export const projects: Project[] = [
     category: 'ecommerce',
     technologies: ['Vue.js', 'Laravel', 'MySQL', 'Tailwind CSS'],
     liveUrl: 'https://adera-shop-front.kalkidan.net/',
-    githubUrl: '#',
+    githubRepos: [
+      { label: 'Backend', url: 'https://github.com/Tiegist/e-commerce-back' },
+      { label: 'Frontend', url: 'https://github.com/Tiegist/e-commerce-front' },
+    ],
   },
   {
     id: 'leather-ordering',
@@ -212,7 +223,9 @@ export const projects: Project[] = [
     category: 'web',
     technologies: ['Vue.js', 'Laravel', 'MySQL', 'PHP', 'REST API'],
     liveUrl: 'https://leather.kalkidan.net/',
-    githubUrl: '#',
+    githubRepos: [
+      { label: 'GitHub', url: 'https://github.com/Tiegist/make-leather' },
+    ],
   },
   {
     id: 'heryakos-static',
@@ -231,7 +244,9 @@ export const projects: Project[] = [
     category: 'web',
     technologies: ['HTML5', 'CSS3', 'JavaScript', 'Responsive Design'],
     liveUrl: 'https://heryakos-technology.github.io/heryakos-static-page/',
-    githubUrl: 'https://github.com/heryakos-technology/heryakos-static-page',
+    githubRepos: [
+      { label: 'GitHub', url: 'https://github.com/Heryakos-Technology/heryakos-static-page' },
+    ],
   },
 ]
 

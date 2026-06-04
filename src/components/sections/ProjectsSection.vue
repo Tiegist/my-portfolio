@@ -5,6 +5,7 @@ import SectionHeading from '@/components/ui/SectionHeading.vue'
 import TechBadge from '@/components/ui/TechBadge.vue'
 import AppButton from '@/components/ui/AppButton.vue'
 import AppModal from '@/components/ui/AppModal.vue'
+import GithubIcon from '@/components/icons/GithubIcon.vue'
 
 const searchQuery = ref('')
 const activeFilter = ref<'all' | 'web' | 'erp' | 'ecommerce'>('all')
@@ -139,7 +140,7 @@ function closeModal() {
               />
             </div>
 
-            <div class="mt-6 flex gap-3">
+            <div class="mt-6 flex flex-wrap gap-2">
               <AppButton
                 v-if="project.liveUrl"
                 :href="project.liveUrl"
@@ -150,13 +151,15 @@ function closeModal() {
                 Live Demo
               </AppButton>
               <AppButton
-                v-if="project.githubUrl"
-                :href="project.githubUrl"
+                v-for="repo in project.githubRepos"
+                :key="repo.url"
+                :href="repo.url"
                 variant="outline"
                 size="sm"
                 external
               >
-                GitHub
+                <GithubIcon :size="14" />
+                {{ repo.label }}
               </AppButton>
               <AppButton variant="ghost" size="sm" @click="openProject(project)">
                 Details
@@ -213,7 +216,7 @@ function closeModal() {
           />
         </div>
 
-        <div class="mt-8 flex gap-3">
+        <div class="mt-8 flex flex-wrap gap-3">
           <AppButton
             v-if="selectedProject.liveUrl"
             :href="selectedProject.liveUrl"
@@ -223,12 +226,14 @@ function closeModal() {
             Live Demo
           </AppButton>
           <AppButton
-            v-if="selectedProject.githubUrl"
-            :href="selectedProject.githubUrl"
+            v-for="repo in selectedProject.githubRepos"
+            :key="repo.url"
+            :href="repo.url"
             variant="outline"
             external
           >
-            GitHub Repository
+            <GithubIcon :size="16" />
+            {{ repo.label }}
           </AppButton>
         </div>
       </template>

@@ -35,11 +35,11 @@ function getProficiencyColor(proficiency: number) {
       />
 
       <!-- Category tabs -->
-      <div class="mb-12 flex flex-wrap justify-center gap-3">
+      <div class="mb-8 flex flex-wrap justify-center gap-2 md:mb-12 md:gap-3">
         <button
           v-for="category in skillCategories"
           :key="category.id"
-          class="flex items-center gap-2 rounded-xl px-5 py-2.5 text-sm font-medium transition-all duration-300"
+          class="flex items-center gap-1.5 rounded-xl px-3 py-2 text-xs font-medium transition-all duration-300 md:gap-2 md:px-5 md:py-2.5 md:text-sm"
           :class="
             activeCategory === category.id
               ? 'bg-gradient-to-r from-indigo-500 to-violet-600 text-white shadow-lg shadow-indigo-500/25'
@@ -66,7 +66,7 @@ function getProficiencyColor(proficiency: number) {
       >
         <div
           :key="activeCategory"
-          class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3"
+          class="grid gap-2.5 sm:grid-cols-2 sm:gap-4 lg:grid-cols-3"
         >
           <div
             v-for="(skill, index) in skillCategories.find((c) => c.id === activeCategory)?.skills"
@@ -74,14 +74,14 @@ function getProficiencyColor(proficiency: number) {
             v-motion
             :initial="{ opacity: 0, y: 20 }"
             :enter="{ opacity: 1, y: 0, transition: { duration: 400, delay: index * 80 } }"
-            class="glass group cursor-default rounded-2xl p-6 transition-all duration-300 hover:border-[var(--accent)] hover:shadow-lg hover:shadow-indigo-500/10"
+            class="glass group cursor-default rounded-xl p-3.5 transition-all duration-300 hover:border-[var(--accent)] hover:shadow-lg hover:shadow-indigo-500/10 md:rounded-2xl md:p-6"
             @mouseenter="hoveredSkill = skill.name"
             @mouseleave="hoveredSkill = null"
           >
-            <div class="mb-4 flex items-center justify-between">
-              <h3 class="font-display text-lg font-semibold">{{ skill.name }}</h3>
+            <div class="mb-2 flex items-center justify-between md:mb-4">
+              <h3 class="font-display text-sm font-semibold md:text-lg">{{ skill.name }}</h3>
               <span
-                class="font-mono text-sm font-bold transition-colors"
+                class="font-mono text-xs font-bold transition-colors md:text-sm"
                 :class="hoveredSkill === skill.name ? 'text-[var(--accent-light)]' : 'text-[var(--text-muted)]'"
               >
                 {{ skill.proficiency }}%
@@ -89,7 +89,7 @@ function getProficiencyColor(proficiency: number) {
             </div>
 
             <!-- Progress bar -->
-            <div class="neu-inset h-2 overflow-hidden rounded-full">
+            <div class="neu-inset h-1.5 overflow-hidden rounded-full md:h-2">
               <div
                 class="h-full rounded-full bg-gradient-to-r transition-all duration-700 ease-out"
                 :class="getProficiencyColor(skill.proficiency)"
@@ -97,8 +97,8 @@ function getProficiencyColor(proficiency: number) {
               />
             </div>
 
-            <!-- Circular chart on hover -->
-            <div class="mt-4 flex justify-center opacity-0 transition-opacity duration-300 group-hover:opacity-100">
+            <!-- Circular chart on hover (desktop only) -->
+            <div class="mt-4 hidden justify-center opacity-0 transition-opacity duration-300 group-hover:opacity-100 md:flex">
               <svg width="60" height="60" viewBox="0 0 60 60" aria-hidden="true">
                 <circle cx="30" cy="30" r="24" fill="none" stroke="var(--border)" stroke-width="4" />
                 <circle

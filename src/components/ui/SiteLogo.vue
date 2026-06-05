@@ -33,7 +33,7 @@ const sizeConfig = {
     <img
       :src="site.logo"
       :alt="site.logoAlt"
-      class="logo-img w-auto object-contain"
+      class="logo-img w-auto max-w-[7.5rem] object-contain sm:max-w-[9rem] md:max-w-none"
       :class="[sizeConfig[size].img, mode === 'dark' ? 'logo-img--dark' : 'logo-img--light']"
       width="200"
       height="48"

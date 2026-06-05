@@ -8,7 +8,7 @@ import CustomCursor from '@/components/layout/CustomCursor.vue'
 </script>
 
 <template>
-  <div class="relative min-h-screen bg-[var(--surface)]">
+  <div class="relative min-h-screen w-full max-w-full overflow-x-hidden bg-[var(--surface)]">
     <ScrollProgress />
     <CustomCursor />
     <AppNavbar />

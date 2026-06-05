@@ -32,20 +32,21 @@ onUnmounted(() => {
 
 <template>
   <header
-    class="fixed left-0 right-0 top-0 z-50 transition-all duration-500"
-    :class="isScrolled ? 'py-3' : 'py-5'"
+    class="fixed inset-x-0 top-0 z-50 w-full max-w-full overflow-x-hidden px-3 sm:px-4 md:px-6"
+    :class="isScrolled ? 'py-2 md:py-3' : 'py-3 md:py-5'"
   >
     <nav
-      class="container-max mx-auto flex items-center justify-between px-6 transition-all duration-500"
-      :class="isScrolled ? 'glass-strong rounded-2xl py-3 shadow-xl' : ''"
+      class="container-max mx-auto flex w-full max-w-full min-w-0 items-center justify-between gap-2 transition-all duration-500 md:gap-4"
+      :class="isScrolled ? 'glass-strong rounded-2xl px-3 py-2.5 shadow-xl sm:px-4 md:px-6 md:py-3' : 'px-0'"
       aria-label="Main navigation"
     >
       <a
         href="#home"
-        class="flex items-center transition-opacity hover:opacity-90"
+        class="flex min-w-0 shrink items-center transition-opacity hover:opacity-90"
         @click.prevent="handleNavClick('#home')"
       >
-        <SiteLogo size="md" />
+        <SiteLogo size="sm" class="md:hidden" />
+        <SiteLogo size="md" class="hidden md:inline-flex" />
       </a>
 
       <!-- Desktop nav -->
@@ -70,9 +71,9 @@ onUnmounted(() => {
         </li>
       </ul>
 
-      <div class="flex items-center gap-3">
+      <div class="flex shrink-0 items-center gap-2 md:gap-3">
         <button
-          class="flex h-10 w-10 items-center justify-center rounded-xl glass transition-colors hover:border-[var(--accent)]"
+          class="flex h-9 w-9 items-center justify-center rounded-xl glass transition-colors hover:border-[var(--accent)] md:h-10 md:w-10"
           :aria-label="themeStore.mode === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'"
           @click="themeStore.toggle()"
         >
@@ -81,7 +82,7 @@ onUnmounted(() => {
         </button>
 
         <button
-          class="flex h-10 w-10 items-center justify-center rounded-xl glass md:hidden"
+          class="flex h-9 w-9 items-center justify-center rounded-xl glass md:hidden md:h-10 md:w-10"
           :aria-expanded="isMobileMenuOpen"
           aria-label="Toggle menu"
           @click="isMobileMenuOpen = !isMobileMenuOpen"
@@ -103,7 +104,7 @@ onUnmounted(() => {
     >
       <div
         v-if="isMobileMenuOpen"
-        class="glass-strong container-max mx-auto mt-2 rounded-2xl p-4 md:hidden"
+        class="glass-strong container-max mx-auto mt-2 w-full max-w-full rounded-2xl p-3 md:hidden"
       >
         <ul class="flex flex-col gap-1">
           <li v-for="link in navLinks" :key="link.id">

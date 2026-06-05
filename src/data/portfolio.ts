@@ -229,7 +229,7 @@ export const projects: Project[] = [
   },
   {
     id: 'heryakos-static',
-    title: 'Heryakos Technology Static Website',
+    title: 'Heryakos Technology Website',
     description: 'Modern company landing page built during internship for a technology solutions provider.',
     longDescription:
       'A responsive static website for Heryakos Technology showcasing their tech solutions and web development services. Built during my software engineering internship with a clean hero section, service highlights, and contact call-to-action.',

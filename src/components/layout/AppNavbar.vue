@@ -45,8 +45,7 @@ onUnmounted(() => {
         class="flex min-w-0 shrink items-center transition-opacity hover:opacity-90"
         @click.prevent="handleNavClick('#home')"
       >
-        <SiteLogo size="sm" class="md:hidden" />
-        <SiteLogo size="md" class="hidden md:inline-flex" />
+        <SiteLogo responsive />
       </a>
 
       <!-- Desktop nav -->

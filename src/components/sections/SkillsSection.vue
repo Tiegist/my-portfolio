@@ -21,7 +21,7 @@ function getProficiencyColor(proficiency: number) {
 </script>
 
 <template>
-  <section id="skills" class="section-padding relative">
+  <section id="skills" class="section-padding section-padding-bottom-sm relative">
     <div class="pointer-events-none absolute inset-0 opacity-30" aria-hidden="true">
       <div class="absolute right-0 top-0 h-96 w-96 rounded-full bg-indigo-500/10 blur-[100px]" />
     </div>

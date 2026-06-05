@@ -41,7 +41,7 @@ function closeModal() {
 </script>
 
 <template>
-  <section id="projects" class="section-padding relative">
+  <section id="projects" class="section-padding section-padding-top-sm relative">
     <div class="container-max">
       <SectionHeading
         label="Portfolio"

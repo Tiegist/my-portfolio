@@ -136,6 +136,25 @@ body {
   }
 }
 
+/* Tighter spacing between adjacent sections */
+.section-padding-bottom-sm {
+  padding-bottom: 1.75rem;
+}
+
+.section-padding-top-sm {
+  padding-top: 1.75rem;
+}
+
+@media (min-width: 768px) {
+  .section-padding-bottom-sm {
+    padding-bottom: 2.25rem;
+  }
+
+  .section-padding-top-sm {
+    padding-top: 2.25rem;
+  }
+}
+
 .container-max {
   max-width: 1200px;
   margin: 0 auto;

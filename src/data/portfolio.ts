@@ -69,14 +69,15 @@ export interface Certification {
 export const site = {
   name: 'TGirma.dev',
   logo: '/logo.png',
-  logoAlt: 'TGirma.dev — Full-Stack Developer',
+  logoAlt: 'TGirma.dev — Frontend Developer',
 }
 
 export const profile = {
   name: 'TGirma',
-  title: 'Full-Stack Software Developer',
-  tagline: 'Building scalable web applications & ERP systems with Vue.js and Laravel',
+  title: 'Frontend Developer & Software Engineer',
+  tagline: 'Building responsive, scalable, and high-performance web applications with React.js and TypeScript',
   email: 'tiegistgirma12@gmail.com',
+  phone: '+251968164845',
   location: 'Addis Ababa, Ethiopia',
   linkedin: 'https://linkedin.com/in/tiegist-girma',
   github: 'https://github.com/Tiegist',
@@ -84,27 +85,27 @@ export const profile = {
   cvUrl: 'https://drive.google.com/file/d/1C_yCt1vyzSgiBN5m9ed7qvtWE1gIpXpB/view?usp=sharing',
   avatar: '/avatar.svg',
   roles: [
-    'Full-Stack Developer',
-    'Vue.js Developer',
-    'Laravel Developer',
-    'ERP System Developer',
+    'Frontend Developer',
+    'React.js Developer',
     'Software Engineer',
+    'TypeScript Developer',
+    'UI Developer',
   ],
   about: {
-    intro: `I'm a passionate Full-Stack Software Developer with deep expertise in Vue.js, Laravel, and enterprise-grade ERP systems. I transform complex business requirements into elegant, performant web applications that deliver real value.`,
-    journey: `My journey began with PHP and quickly evolved into full-stack development. I've architected criminal management systems, e-commerce platforms, and custom ERP solutions — always prioritizing clean code, security, and exceptional user experience.`,
+    intro: `Frontend Developer and Software Engineer with over two years of professional experience designing and developing responsive, scalable, and high-performance web applications. Proficient in React.js, JavaScript (ES6+), TypeScript, HTML5, CSS3, Tailwind CSS, Redux, and RESTful API integration.`,
+    journey: `Experienced in building reusable frontend components, implementing responsive user interfaces, optimizing application performance, and collaborating with UI/UX designers, backend developers, and QA teams throughout the software development lifecycle. Strong foundation in Git, Agile development, debugging, and delivering clean, maintainable code with a focus on user experience and software quality.`,
     expertise: [
-      'Full-stack web application development',
-      'Enterprise Resource Planning (ERP) systems',
-      'RESTful API design & implementation',
-      'Role-based access control & authentication',
-      'Database architecture & optimization',
+      'Responsive & high-performance web application development',
+      'Reusable UI component development',
+      'RESTful API integration',
+      'Performance optimization & debugging',
+      'Agile/Scrum development workflows',
     ],
     interests: [
-      'Full-Stack Web Application Development',
-      'Backend Engineering & RESTful APIs',
-      'Enterprise Resource Planning (ERP) Systems',
-      'Business Process Automation',
+      'Frontend Development with React.js & TypeScript',
+      'Component-Based Architecture',
+      'UI/UX Collaboration',
+      'Performance Optimization',
     ],
   },
 }
@@ -112,52 +113,84 @@ export const profile = {
 export const stats: Stat[] = [
   { label: 'Years of Experience', value: 2, suffix: '+' },
   { label: 'Projects Completed', value: 10, suffix: '+' },
-  { label: 'Technologies Used', value: 5, suffix: '+' },
+  { label: 'Technologies Used', value: 15, suffix: '+' },
   { label: 'Team Projects', value: 5, suffix: '+' },
 ]
 
 export const skillCategories: SkillCategory[] = [
   {
     id: 'frontend',
-    title: 'Frontend',
+    title: 'Frontend Development',
     skills: [
-      { name: 'Vue.js', proficiency: 95 },
-      { name: 'JavaScript', proficiency: 92 },
+      { name: 'React.js', proficiency: 90 },
+      { name: 'JavaScript (ES6+)', proficiency: 92 },
       { name: 'TypeScript', proficiency: 85 },
-      { name: 'Tailwind CSS', proficiency: 90 },
+      { name: 'Next.js', proficiency: 82 },
       { name: 'HTML5', proficiency: 95 },
       { name: 'CSS3', proficiency: 88 },
+      { name: 'Tailwind CSS', proficiency: 90 },
+      { name: 'Material UI', proficiency: 78 },
+      { name: 'Responsive Web Design', proficiency: 92 },
+      { name: 'Cross-Browser Compatibility', proficiency: 85 },
     ],
   },
   {
-    id: 'backend',
-    title: 'Backend',
+    id: 'state-management',
+    title: 'State Management',
     skills: [
-      { name: 'Laravel', proficiency: 93 },
+      { name: 'Redux', proficiency: 82 },
+      { name: 'Context API', proficiency: 85 },
+      { name: 'Pinia', proficiency: 88 },
+    ],
+  },
+  {
+    id: 'backend-apis',
+    title: 'Backend & APIs',
+    skills: [
+      { name: 'RESTful API Integration', proficiency: 92 },
+      { name: 'Laravel', proficiency: 88 },
       { name: 'PHP', proficiency: 85 },
-      { name: 'REST APIs', proficiency: 92 },
-      { name: 'Authentication Systems', proficiency: 88 },
-      { name: 'Role & Permission Management', proficiency: 93 },
-    ],
-  },
-  {
-    id: 'database',
-    title: 'Database',
-    skills: [
-      { name: 'MySQL', proficiency: 90 },
-      // { name: 'PostgreSQL', proficiency: 75 },
+      { name: 'MySQL', proficiency: 88 },
     ],
   },
   {
     id: 'tools',
-    title: 'Tools',
+    title: 'Tools & Platforms',
     skills: [
-      { name: 'Git', proficiency: 92 },
-      { name: 'GitHub', proficiency: 90 },
-      // { name: 'Docker', proficiency: 70 },
+      { name: 'Git & GitHub', proficiency: 92 },
+      { name: 'npm', proficiency: 90 },
+      { name: 'Yarn', proficiency: 85 },
+      { name: 'Vite', proficiency: 88 },
       { name: 'Postman', proficiency: 88 },
-      { name: 'Figma', proficiency: 75 },
-      { name: 'jira', proficiency: 90},
+      { name: 'VS Code', proficiency: 95 },
+    ],
+  },
+  {
+    id: 'practices',
+    title: 'Testing & Practices',
+    skills: [
+      { name: 'Frontend Testing Fundamentals', proficiency: 80 },
+      { name: 'Debugging & Troubleshooting', proficiency: 88 },
+      { name: 'Performance Optimization', proficiency: 86 },
+      { name: 'Component-Based Architecture', proficiency: 90 },
+      { name: 'Reusable UI Component Development', proficiency: 92 },
+      { name: 'Technical Documentation', proficiency: 84 },
+      { name: 'Agile/Scrum Development', proficiency: 87 },
+      { name: 'CI/CD Fundamentals', proficiency: 78 },
+    ],
+  },
+  {
+    id: 'professional',
+    title: 'Professional Skills',
+    skills: [
+      { name: 'Problem Solving', proficiency: 92 },
+      { name: 'Analytical Thinking', proficiency: 90 },
+      { name: 'Time Management', proficiency: 88 },
+      { name: 'Communication', proficiency: 90 },
+      { name: 'Team Collaboration', proficiency: 92 },
+      { name: 'Adaptability', proficiency: 91 },
+      { name: 'Attention to Detail', proficiency: 89 },
+      { name: 'Continuous Learning', proficiency: 94 },
     ],
   },
 ]
@@ -178,7 +211,7 @@ export const projects: Project[] = [
     image: '/projects/criminal-management.png',
     gradient: 'from-violet-600/40 via-purple-500/20 to-fuchsia-600/30',
     category: 'erp',
-    technologies: ['Vue.js', 'Laravel', 'MySQL', 'Tailwind CSS', 'REST API'],
+    technologies: ['React.js', 'Vue.js', 'Laravel', 'MySQL', 'Tailwind CSS', 'REST API'],
     liveUrl: 'https://criminal.kalkidan.net/',
     githubRepos: [
       { label: 'Backend', url: 'https://github.com/kalkidansolomon16/criminalback' },
@@ -200,7 +233,7 @@ export const projects: Project[] = [
     image: '/projects/adera-shop.png',
     gradient: 'from-cyan-600/40 via-blue-500/20 to-indigo-600/30',
     category: 'ecommerce',
-    technologies: ['Vue.js', 'Laravel', 'MySQL', 'Tailwind CSS'],
+    technologies: ['React.js', 'Vue.js', 'Laravel', 'MySQL', 'Tailwind CSS'],
     liveUrl: 'https://adera-shop-front.kalkidan.net/',
     githubRepos: [
       { label: 'Backend', url: 'https://github.com/Tiegist/e-commerce-back' },
@@ -221,7 +254,7 @@ export const projects: Project[] = [
     image: '/projects/leather-ordering.png',
     gradient: 'from-amber-600/40 via-orange-500/20 to-red-600/30',
     category: 'web',
-    technologies: ['Vue.js', 'Laravel', 'MySQL', 'PHP', 'REST API'],
+    technologies: ['React.js', 'Vue.js', 'Laravel', 'MySQL', 'PHP', 'REST API'],
     liveUrl: 'https://leather.kalkidan.net/',
     githubRepos: [
       { label: 'GitHub', url: 'https://github.com/Tiegist/make-leather' },
@@ -242,7 +275,7 @@ export const projects: Project[] = [
     image: '/projects/heryakos-static.png',
     gradient: 'from-purple-600/40 via-violet-500/20 to-indigo-600/30',
     category: 'web',
-    technologies: ['HTML5', 'CSS3', 'JavaScript', 'Responsive Design'],
+    technologies: ['React.js', 'HTML5', 'CSS3', 'JavaScript', 'Responsive Design'],
     liveUrl: 'https://heryakos-technology.github.io/heryakos-static-page/',
     githubRepos: [
       { label: 'GitHub', url: 'https://github.com/Heryakos-Technology/heryakos-static-page' },
@@ -258,8 +291,10 @@ export const timeline: TimelineItem[] = [
     organization: 'Software Development Company',
     period: '2025 — Present',
     description:
-      'Developing and maintaining enterprise-level ERP systems using Vue.js and Laravel. Building scalable RESTful APIs, implementing role-based access control, inventory management workflows, authentication systems, and business automation features.',
+      'Developing and maintaining enterprise-level ERP systems using React.js, Next.js, Vue.js, and Laravel. Building scalable RESTful APIs, reusable frontend components, role-based access control, inventory management workflows, authentication systems, and business automation features.',
     technologies: [
+      'React.js',
+      'Next.js',
       'Vue.js',
       'Laravel',
       'PHP',
@@ -276,8 +311,10 @@ export const timeline: TimelineItem[] = [
     organization: 'Internship Program',
     period: '2024 — 2025',
     description:
-      'Contributed to the design and development of web-based management systems during my internship and academic projects. Participated in requirements gathering, database design, frontend development, backend API implementation, testing, and deployment while working on real-world software solutions.',
+      'Contributed to the design and development of web-based management systems during my internship and academic projects. Built responsive user interfaces with React.js, Next.js, and Vue.js, participated in requirements gathering, database design, frontend development, backend API implementation, testing, and deployment while working on real-world software solutions.',
     technologies: [
+      'React.js',
+      'Next.js',
       'Vue.js',
       'Laravel',
       'PHP',
@@ -294,8 +331,10 @@ export const timeline: TimelineItem[] = [
     organization: 'University Capstone Project',
     period: '2025',
     description:
-      'Designed and developed a prison management platform for managing prisoner records, court histories, medical histories, and user roles. Conducted field research with prison officials to gather system requirements and improve operational efficiency.',
+      'Designed and developed a prison management platform for managing prisoner records, court histories, medical histories, and user roles. Built the frontend with React.js, Next.js, and Vue.js, and conducted field research with prison officials to gather system requirements and improve operational efficiency.',
     technologies: [
+      'React.js',
+      'Next.js',
       'Vue.js',
       'Laravel',
       'MySQL',
@@ -311,8 +350,10 @@ export const timeline: TimelineItem[] = [
     organization: 'Personal Project',
     period: '2025',
     description:
-      'Developed a modern e-commerce platform featuring product catalogs, shopping cart functionality, order management, customer authentication.',
+      'Developed a modern e-commerce platform featuring product catalogs, shopping cart functionality, order management, and customer authentication using React.js, Next.js, and Vue.js on the frontend.',
     technologies: [
+      'React.js',
+      'Next.js',
       'Vue.js',
       'Laravel',
       'MySQL',
@@ -328,8 +369,10 @@ export const timeline: TimelineItem[] = [
     organization: 'Business Solution',
     period: '2024',
     description:
-      'Developed a web platform for leather businesses to showcase their products online and receive customer orders. Built an intuitive product catalog, detailed product pages, and an order submission system to help businesses improve their online presence and customer engagement.',
+      'Developed a web platform for leather businesses to showcase their products online and receive customer orders. Built an intuitive React.js, Next.js, and Vue.js product catalog, detailed product pages, and an order submission system to help businesses improve their online presence and customer engagement.',
     technologies: [
+      'React.js',
+      'Next.js',
       'Vue.js',
       'Laravel',
       'MySQL',
@@ -344,8 +387,10 @@ export const timeline: TimelineItem[] = [
     organization: 'Professional Experience',
     period: '2024 — Present',
     description:
-      'Contributed to ERP modules including inventory management, product tracking, permissions management, reporting dashboards, and business workflow automation.',
+      'Contributed to ERP modules including inventory management, product tracking, permissions management, reporting dashboards, and business workflow automation using React.js, Next.js, and Vue.js for frontend interfaces.',
     technologies: [
+      'React.js',
+      'Next.js',
       'Vue.js',
       'Laravel',
       'MySQL',
@@ -391,7 +436,7 @@ export const testimonials: Testimonial[] = [
     contacts:'abuchu9019@gmail.com, +251927720829',
     content:
       'I had the privilege of mentoring Tiegist during her internship at Qelem Meda Technologies. She demonstrated exceptional dedication, quickly adapted to new technologies, and consistently delivered high-quality work. Her passion for software development, technical skills, and strong work ethic make her a valuable asset to any development team.',
-    avatar: '/images/testimonials/amare.jpg',
+    avatar: '',
   },
 
 ]
@@ -416,7 +461,7 @@ export const certifications: Certification[] = [
   },
 ]
 
-export const resumeSummary = `Results-driven Full-Stack Software Developer with 4+ years of experience building scalable web applications and ERP systems. Expert in Vue.js, Laravel, PHP, and MySQL with a proven track record of delivering enterprise-grade solutions. Passionate about clean code, performance optimization, and creating exceptional user experiences.`
+export const resumeSummary = `Frontend Developer and Software Engineer with over two years of professional experience designing and developing responsive, scalable, and high-performance web applications. Proficient in React.js, JavaScript (ES6+), TypeScript, HTML5, CSS3, Tailwind CSS, Redux, and RESTful API integration. Experienced in building reusable frontend components, implementing responsive user interfaces, optimizing application performance, and collaborating with UI/UX designers, backend developers, and QA teams throughout the software development lifecycle. Strong foundation in Git, Agile development, debugging, and delivering clean, maintainable code with a focus on user experience and software quality.`
 
 export const navLinks = [
   { id: 'home', label: 'Home', href: '#home' },

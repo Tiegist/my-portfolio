@@ -90,7 +90,7 @@ const { displayText } = useTypedText(profile.roles)
           class="mt-12 flex flex-wrap gap-3"
         >
           <span
-            v-for="tech in ['React.js', 'TypeScript', 'Next.js', 'Redux', 'Tailwind']"
+            v-for="tech in profile.highlightTech"
             :key="tech"
             class="rounded-full border border-[var(--border)] bg-white/5 px-4 py-1.5 text-xs font-medium text-[var(--text-secondary)]"
           >

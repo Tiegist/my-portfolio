@@ -5,29 +5,21 @@ import AnimatedCounter from '@/components/ui/AnimatedCounter.vue'
 </script>
 
 <template>
-  <section id="achievements" class="section-padding relative">
-    <div class="container-max">
+  <section id="achievements" class="section">
+    <div v-reveal class="container-page">
       <SectionHeading
-        label="Achievements"
-        title="Milestones & Impact"
-        subtitle="Numbers that reflect dedication and growth"
-        align="center"
+        title="Achievements"
+        subtitle="Numbers that reflect dedication and growth."
       />
 
       <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-        <div
-          v-for="(achievement, index) in achievements"
+        <AnimatedCounter
+          v-for="achievement in achievements"
           :key="achievement.label"
-          v-motion
-          :initial="{ opacity: 0, scale: 0.9 }"
-          :visible="{ opacity: 1, scale: 1, transition: { duration: 500, delay: index * 100 } }"
-        >
-          <AnimatedCounter
-            :value="achievement.value"
-            :suffix="achievement.suffix"
-            :label="achievement.label"
-          />
-        </div>
+          :value="achievement.value"
+          :suffix="achievement.suffix"
+          :label="achievement.label"
+        />
       </div>
     </div>
   </section>

@@ -32,7 +32,7 @@ const config = sizeConfig[props.size]
     :class="[
       responsive ? 'px-2 py-0.5 md:px-2.5 md:py-1' : config.pad,
       mode === 'light'
-        ? 'rounded-lg bg-black shadow-md ring-1 ring-black/10'
+        ? 'rounded-lg bg-black'
         : 'rounded-md',
     ]"
   >

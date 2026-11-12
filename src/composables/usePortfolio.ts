@@ -1,55 +1,4 @@
-import { ref, onMounted, onUnmounted, type Ref } from 'vue'
-
-export function useTypedText(
-  words: string[],
-  typingSpeed = 80,
-  deletingSpeed = 40,
-  pauseDuration = 2000,
-) {
-  const displayText = ref('')
-  const wordIndex = ref(0)
-  const isDeleting = ref(false)
-  let timeoutId: ReturnType<typeof setTimeout>
-
-  function tick() {
-    const currentWord = words[wordIndex.value] ?? ''
-
-    if (!isDeleting.value) {
-      displayText.value = currentWord.slice(0, displayText.value.length + 1)
-
-      if (displayText.value === currentWord) {
-        timeoutId = setTimeout(() => {
-          isDeleting.value = true
-          tick()
-        }, pauseDuration)
-        return
-      }
-
-      timeoutId = setTimeout(tick, typingSpeed)
-    } else {
-      displayText.value = currentWord.slice(0, displayText.value.length - 1)
-
-      if (displayText.value === '') {
-        isDeleting.value = false
-        wordIndex.value = (wordIndex.value + 1) % words.length
-        timeoutId = setTimeout(tick, typingSpeed)
-        return
-      }
-
-      timeoutId = setTimeout(tick, deletingSpeed)
-    }
-  }
-
-  onMounted(() => {
-    tick()
-  })
-
-  onUnmounted(() => {
-    clearTimeout(timeoutId)
-  })
-
-  return { displayText }
-}
+import { ref, onMounted, onUnmounted } from 'vue'
 
 export function useCounterAnimation(
   target: number,
@@ -105,48 +54,48 @@ export function useCounterAnimation(
   return { count, elementRef, animate }
 }
 
-export function useScrollProgress() {
-  const progress = ref(0)
+/**
+ * Tracks which section is currently being read, for highlighting the nav.
+ * Sections are looked up on every update, so it keeps working even though
+ * the page content is rendered after the navbar.
+ */
+export function useScrollSpy(sectionIds: string[]) {
+  const activeSection = ref('')
+  let frame = 0
 
-  function updateProgress() {
-    const scrollTop = window.scrollY
-    const docHeight = document.documentElement.scrollHeight - window.innerHeight
-    progress.value = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0
+  function update() {
+    frame = 0
+    const line = window.innerHeight * 0.35
+    let current = ''
+
+    for (const id of sectionIds) {
+      const el = document.getElementById(id)
+      if (el && el.getBoundingClientRect().top <= line) current = id
+    }
+
+    // At the very bottom the last section may be too short to reach the line
+    const atBottom =
+      window.scrollY > 0 &&
+      window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 2
+    if (atBottom) current = sectionIds[sectionIds.length - 1] ?? current
+
+    activeSection.value = current
+  }
+
+  function requestUpdate() {
+    if (!frame) frame = requestAnimationFrame(update)
   }
 
   onMounted(() => {
-    window.addEventListener('scroll', updateProgress, { passive: true })
-    updateProgress()
+    window.addEventListener('scroll', requestUpdate, { passive: true })
+    window.addEventListener('resize', requestUpdate, { passive: true })
+    requestUpdate()
   })
 
   onUnmounted(() => {
-    window.removeEventListener('scroll', updateProgress)
-  })
-
-  return { progress }
-}
-
-export function useScrollSpy(sectionIds: string[]) {
-  const activeSection = ref(sectionIds[0] ?? '')
-
-  onMounted(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            activeSection.value = entry.target.id
-          }
-        })
-      },
-      { rootMargin: '-40% 0px -50% 0px', threshold: 0 },
-    )
-
-    sectionIds.forEach((id) => {
-      const el = document.getElementById(id)
-      if (el) observer.observe(el)
-    })
-
-    onUnmounted(() => observer.disconnect())
+    window.removeEventListener('scroll', requestUpdate)
+    window.removeEventListener('resize', requestUpdate)
+    if (frame) cancelAnimationFrame(frame)
   })
 
   return { activeSection }
@@ -154,11 +103,16 @@ export function useScrollSpy(sectionIds: string[]) {
 
 export function useSmoothScroll() {
   function scrollTo(href: string) {
-    const id = href.replace('#', '')
-    const el = document.getElementById(id)
-    if (el) {
-      el.scrollIntoView({ behavior: 'smooth', block: 'start' })
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+    const behavior: ScrollBehavior = reduceMotion ? 'auto' : 'smooth'
+    const el = document.getElementById(href.replace('#', ''))
+
+    if (!el || el.id === 'home') {
+      window.scrollTo({ top: 0, behavior })
+      return
     }
+
+    el.scrollIntoView({ behavior, block: 'start' })
   }
 
   return { scrollTo }
@@ -180,24 +134,4 @@ export function useParallax(speed = 0.3) {
   })
 
   return { offset }
-}
-
-export function useMousePosition(): { x: Ref<number>; y: Ref<number> } {
-  const x = ref(0)
-  const y = ref(0)
-
-  function onMove(e: MouseEvent) {
-    x.value = e.clientX
-    y.value = e.clientY
-  }
-
-  onMounted(() => {
-    window.addEventListener('mousemove', onMove, { passive: true })
-  })
-
-  onUnmounted(() => {
-    window.removeEventListener('mousemove', onMove)
-  })
-
-  return { x, y }
 }

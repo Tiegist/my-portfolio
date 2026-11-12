@@ -1,9 +1,8 @@
-import { profile } from '@/data/portfolio'
+import { profile, site } from '@/data/portfolio'
 
 export interface ContactFormData {
   name: string
   email: string
-  subject: string
   message: string
 }
 
@@ -17,9 +16,8 @@ export async function sendContactEmail(data: ContactFormData): Promise<void> {
   const formData = new FormData()
   formData.append('name', data.name)
   formData.append('email', data.email)
-  formData.append('subject', data.subject)
   formData.append('message', data.message)
-  formData.append('_subject', `TGirma.dev — ${data.subject}`)
+  formData.append('_subject', `${site.name} — New message from ${data.name}`)
   formData.append('_replyto', data.email)
   formData.append('_template', 'table')
 

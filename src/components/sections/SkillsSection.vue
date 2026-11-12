@@ -1,140 +1,30 @@
 <script setup lang="ts">
-import { ref } from 'vue'
 import { skillCategories } from '@/data/portfolio'
 import SectionHeading from '@/components/ui/SectionHeading.vue'
-
-const activeCategory = ref(skillCategories[0]?.id ?? '')
-const hoveredSkill = ref<string | null>(null)
-
-const categoryIcons: Record<string, string> = {
-  frontend: 'M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5',
-  'state-management': 'M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5',
-  'backend-apis': 'M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10',
-  tools: 'M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z',
-  practices: 'M9 11l3 3L22 4 M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11',
-  professional: 'M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2 M9 11a4 4 0 1 0 0-8 4 4 0 0 0 0 8 M23 21v-2a4 4 0 0 0-3-3.87 M16 3.13a4 4 0 0 1 0 7.75',
-}
-
-function getProficiencyColor(proficiency: number) {
-  if (proficiency >= 90) return 'from-emerald-500 to-cyan-400'
-  if (proficiency >= 75) return 'from-indigo-500 to-violet-500'
-  return 'from-amber-500 to-orange-400'
-}
+import TechBadge from '@/components/ui/TechBadge.vue'
 </script>
 
 <template>
-  <section id="skills" class="section-padding section-padding-bottom-sm relative">
-    <div class="pointer-events-none absolute inset-0 opacity-30" aria-hidden="true">
-      <div class="absolute right-0 top-0 h-96 w-96 rounded-full bg-indigo-500/10 blur-[100px]" />
-    </div>
+  <section id="skills" class="section">
+    <div v-reveal class="container-page">
+      <SectionHeading title="Skills" subtitle="Technologies and practices I work with." />
 
-    <div class="container-max relative">
-      <SectionHeading
-        label="Skills"
-        title="Technical Arsenal"
-        subtitle="Technologies I use to bring ideas to life"
-        align="center"
-      />
-
-      <!-- Category tabs -->
-      <div class="mb-8 flex flex-wrap justify-center gap-2 md:mb-12 md:gap-3">
-        <button
+      <dl class="divide-y divide-line border-y border-line">
+        <div
           v-for="category in skillCategories"
           :key="category.id"
-          class="flex items-center gap-1.5 rounded-xl px-3 py-2 text-xs font-medium transition-all duration-300 md:gap-2 md:px-5 md:py-2.5 md:text-sm"
-          :class="
-            activeCategory === category.id
-              ? 'bg-gradient-to-r from-indigo-500 to-violet-600 text-white shadow-lg shadow-indigo-500/25'
-              : 'glass text-[var(--text-secondary)] hover:text-[var(--text-primary)]'
-          "
-          @click="activeCategory = category.id"
+          class="grid gap-3 py-5 md:grid-cols-[14rem_1fr] md:gap-6"
         >
-          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <path :d="categoryIcons[category.id]" />
-          </svg>
-          {{ category.title }}
-        </button>
-      </div>
-
-      <!-- Skills grid -->
-      <Transition
-        mode="out-in"
-        enter-active-class="transition duration-400 ease-out"
-        enter-from-class="opacity-0 translate-y-4"
-        enter-to-class="opacity-100 translate-y-0"
-        leave-active-class="transition duration-200 ease-in"
-        leave-from-class="opacity-100"
-        leave-to-class="opacity-0"
-      >
-        <div
-          :key="activeCategory"
-          class="grid gap-2.5 sm:grid-cols-2 sm:gap-4 lg:grid-cols-3"
-        >
-          <div
-            v-for="(skill, index) in skillCategories.find((c) => c.id === activeCategory)?.skills"
-            :key="skill.name"
-            v-motion
-            :initial="{ opacity: 0, y: 20 }"
-            :enter="{ opacity: 1, y: 0, transition: { duration: 400, delay: index * 80 } }"
-            class="glass group cursor-default rounded-xl p-3.5 transition-all duration-300 hover:border-[var(--accent)] hover:shadow-lg hover:shadow-indigo-500/10 md:rounded-2xl md:p-6"
-            @mouseenter="hoveredSkill = skill.name"
-            @mouseleave="hoveredSkill = null"
-          >
-            <div class="mb-2 flex items-center justify-between md:mb-4">
-              <h3 class="font-display text-sm font-semibold md:text-lg">{{ skill.name }}</h3>
-              <span
-                class="font-mono text-xs font-bold transition-colors md:text-sm"
-                :class="hoveredSkill === skill.name ? 'text-[var(--accent-light)]' : 'text-[var(--text-muted)]'"
-              >
-                {{ skill.proficiency }}%
-              </span>
-            </div>
-
-            <!-- Progress bar -->
-            <div class="neu-inset h-1.5 overflow-hidden rounded-full md:h-2">
-              <div
-                class="h-full rounded-full bg-gradient-to-r transition-all duration-700 ease-out"
-                :class="getProficiencyColor(skill.proficiency)"
-                :style="{ width: `${skill.proficiency}%` }"
-              />
-            </div>
-
-            <!-- Circular chart on hover (desktop only) -->
-            <div class="mt-4 hidden justify-center opacity-0 transition-opacity duration-300 group-hover:opacity-100 md:flex">
-              <svg width="60" height="60" viewBox="0 0 60 60" aria-hidden="true">
-                <circle cx="30" cy="30" r="24" fill="none" stroke="var(--border)" stroke-width="4" />
-                <circle
-                  cx="30"
-                  cy="30"
-                  r="24"
-                  fill="none"
-                  stroke="url(#skillGradient)"
-                  stroke-width="4"
-                  stroke-linecap="round"
-                  :stroke-dasharray="`${skill.proficiency * 1.508} 150.8`"
-                  transform="rotate(-90 30 30)"
-                  class="transition-all duration-700"
-                />
-                <defs>
-                  <linearGradient id="skillGradient" x1="0%" y1="0%" x2="100%" y2="0%">
-                    <stop offset="0%" stop-color="#6366f1" />
-                    <stop offset="100%" stop-color="#22d3ee" />
-                  </linearGradient>
-                </defs>
-              </svg>
-            </div>
-          </div>
+          <dt class="text-sm font-medium text-fg md:pt-1">{{ category.title }}</dt>
+          <dd>
+            <ul class="flex flex-wrap gap-2">
+              <li v-for="skill in category.skills" :key="skill">
+                <TechBadge :label="skill" />
+              </li>
+            </ul>
+          </dd>
         </div>
-      </Transition>
+      </dl>
     </div>
   </section>
 </template>
-
-<style scoped>
-.font-display {
-  font-family: var(--font-display);
-}
-.font-mono {
-  font-family: var(--font-mono);
-}
-</style>

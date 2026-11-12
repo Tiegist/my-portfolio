@@ -53,19 +53,10 @@ onMounted(() => {
 </script>
 
 <template>
-  <div
-    ref="elementRef"
-    class="glass group rounded-2xl p-6 transition-all duration-300 hover:border-[var(--accent)] hover:shadow-lg hover:shadow-indigo-500/10"
-  >
-    <p class="font-display text-4xl font-bold text-gradient md:text-5xl">
+  <div ref="elementRef" class="card p-6">
+    <p class="font-display text-3xl font-bold text-fg md:text-4xl">
       {{ count }}{{ suffix }}
     </p>
-    <p class="mt-2 text-sm text-[var(--text-secondary)]">{{ label }}</p>
+    <p class="mt-2 text-sm text-fg-muted">{{ label }}</p>
   </div>
 </template>
-
-<style scoped>
-.font-display {
-  font-family: var(--font-display);
-}
-</style>

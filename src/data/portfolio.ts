@@ -63,7 +63,7 @@ export const site = {
 }
 
 export const profile = {
-  name: 'TGirma',
+  name: 'Tiegist Girma',
   title: 'Full-Stack Developer & Software Engineer',
   tagline:
     'Building responsive, scalable web applications with React.js, Vue.js, Laravel, and TypeScript',
